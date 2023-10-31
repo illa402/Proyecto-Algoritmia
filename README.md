@@ -1,2 +1,1 @@
 # Proyecto-Algoritmia
-LOL
