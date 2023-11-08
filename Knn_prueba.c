@@ -61,11 +61,11 @@ int main(void){
 int Resultado (valores d, todos t){
     int match = t[0].match;
     int dis;
-    int dis_max = calcular_dis(d,t[0].v);
+    int dis_min = calcular_dis(d,t[0].v);
     for(int i = 1; i < N; i++){
         dis = calcular_dis(d, t[i].v);
-        if(dis < dis_max){
-            dis_max = dis;
+        if(dis < dis_min){
+            dis_min = dis;
             match = t[i].match;
         }
         dis = 0;
@@ -78,9 +78,9 @@ int calcular_dis(valores a, valores b){
     int dist = 0;
     for (int i = 0; i < M; i++){
         dis = (a[i] - b[i]);
-        dis = dis * dis;
+        dis = dis * dis; //por no hacer valor absoluto
         dist += dis;
     }
-    return(dist);
+    return(dist); //como en si el valor da igual, no ponemos la raiz cuadrada (dis1 < dis2 <=> sqrt(dis1) < sqrt(dis2))
 }
 
