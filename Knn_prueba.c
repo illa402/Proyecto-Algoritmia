@@ -12,6 +12,7 @@ typedef dato todos[N];
 
 int Resultado (valores, todos);
 int calcular_dis(valores a, valores b);
+int abs(int a);
 
 int main(void){
     todos tabla;
@@ -77,10 +78,16 @@ int calcular_dis(valores a, valores b){
     int dis;
     int dist = 0;
     for (int i = 0; i < M; i++){
-        dis = (a[i] - b[i]);
-        dis = dis * dis; //por no hacer valor absoluto
+        dis = abs(a[i] - b[i]);
         dist += dis;
     }
     return(dist); //como en si el valor da igual, no ponemos la raiz cuadrada (dis1 < dis2 <=> sqrt(dis1) < sqrt(dis2))
+}
+
+int abs(int a){
+	if (a > -a)
+		return -a;
+	else
+		return a;
 }
 
