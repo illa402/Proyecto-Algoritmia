@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #define N 4
 #define M 4
 
@@ -61,8 +62,8 @@ int main(void){
 }
 int Resultado (valores d, todos t){
     int match = t[0].match;
-    int dis;
-    int dis_min = calcular_dis(d,t[0].v);
+    float dis;
+    float dis_min = calcular_dis(d,t[0].v);
     for(int i = 1; i < N; i++){
         dis = calcular_dis(d, t[i].v);
         if(dis < dis_min){
@@ -76,18 +77,11 @@ int Resultado (valores d, todos t){
 
 int calcular_dis(valores a, valores b){
     int dis;
-    int dist = 0;
+    float dist = 0;
     for (int i = 0; i < M; i++){
-        dis = abs(a[i] - b[i]);
+        dis = pow((a[i] - b[i]),2);
         dist += dis;
     }
-    return(dist); //como en si el valor da igual, no ponemos la raiz cuadrada (dis1 < dis2 <=> sqrt(dis1) < sqrt(dis2))
-}
-
-int abs(int a){
-	if (a > -a)
-		return -a;
-	else
-		return a;
+    return(sqrt(dist));
 }
 
