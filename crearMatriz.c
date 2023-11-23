@@ -116,7 +116,7 @@ void leerDatos(FILE *archivo, Dato **datos, char ***nombresAtributos,int *cantid
     *cantidadColumnas = cantidadAtributos;
 
     *datos = (Dato *)malloc(0);
-
+#nada
     int filaActual = 0;
     while (fgets(linea, sizeof(linea), archivo)) {
       token = strtok(linea, ";");
