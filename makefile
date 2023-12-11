@@ -12,6 +12,9 @@ enn.o: enn.c datos.c knn.c
 knn.o: knn.c datos.c
 	gcc -g -c knn.c
 
+metricas.o: metricas.c datos.c
+	gcc -g -c metricas.c
+
 datos.o: datos.c
 	gcc -g -c datos.c
 

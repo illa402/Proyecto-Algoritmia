@@ -1,6 +1,32 @@
 #include "metricas.h"
 #include <stdio.h>
 
+void calcularMetricas(int verdaderosPositivos, int verdaderosNegativos,
+                      int falsosPositivos, int falsosNegativos, int k) {
+    double precision = (double)(verdaderosPositivos + verdaderosNegativos) /
+                     (verdaderosPositivos + verdaderosNegativos +
+                      falsosPositivos + falsosNegativos);
+    double sensibilidad = 0.0;
+    if (verdaderosPositivos + falsosNegativos != 0) {
+        sensibilidad =
+            (double)verdaderosPositivos / (verdaderosPositivos + falsosNegativos);
+    } else {
+        sensibilidad = 0.0;
+    }
+    double especificidad =
+        (double)verdaderosNegativos / (verdaderosNegativos + falsosPositivos);
+    double valorPredictivoPositivo =
+        (double)verdaderosPositivos / (verdaderosPositivos + falsosPositivos);
+    double valorPredictivoNegativo =
+        (double)verdaderosNegativos / (verdaderosNegativos + falsosNegativos);
+
+    printf("Precision: %.3f\n", precision);
+    printf("Sensibilidad: %.3f\n", sensibilidad);
+    printf("Especificidad: %.3f\n", especificidad);
+    printf("Valor Predictivo Positivo: %.3f\n", valorPredictivoPositivo);
+    printf("Valor Predictivo Negativo: %.3f\n", valorPredictivoNegativo);
+}
+
 void calcularMetricasKnn(Dato *datosEntrenamiento, int cantidadFilasEntrenamiento,
                          Dato *datosPrueba, int cantidadFilasPrueba,
                          int cantidadColumnas, int k) {
@@ -28,28 +54,4 @@ void calcularMetricasKnn(Dato *datosEntrenamiento, int cantidadFilasEntrenamient
                      falsosNegativos, k);
 }
 
-void calcularMetricas(int verdaderosPositivos, int verdaderosNegativos,
-                      int falsosPositivos, int falsosNegativos, int k) {
-    double precision = (double)(verdaderosPositivos + verdaderosNegativos) /
-                     (verdaderosPositivos + verdaderosNegativos +
-                      falsosPositivos + falsosNegativos);
-    double sensibilidad = 0.0;
-    if (verdaderosPositivos + falsosNegativos != 0) {
-        sensibilidad =
-            (double)verdaderosPositivos / (verdaderosPositivos + falsosNegativos);
-    } else {
-        sensibilidad = 0.0;
-    }
-    double especificidad =
-        (double)verdaderosNegativos / (verdaderosNegativos + falsosPositivos);
-    double valorPredictivoPositivo =
-        (double)verdaderosPositivos / (verdaderosPositivos + falsosPositivos);
-    double valorPredictivoNegativo =
-        (double)verdaderosNegativos / (verdaderosNegativos + falsosNegativos);
 
-    printf("Precision: %.3f\n", precision);
-    printf("Sensibilidad: %.3f\n", sensibilidad);
-    printf("Especificidad: %.3f\n", especificidad);
-    printf("Valor Predictivo Positivo: %.3f\n", valorPredictivoPositivo);
-    printf("Valor Predictivo Negativo: %.3f\n", valorPredictivoNegativo);
-}
