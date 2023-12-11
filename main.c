@@ -50,8 +50,6 @@ int main() {
 
     enn(datosEntrenamiento, &datosEntrenamientoEnn, cantidadColumnas, cantidadFilasEntrenamiento, &cantidadFilasEntrenamientoEnn, k);
     printf("Cantidad de filas del dataset entrenamiento: %d\nCantidad de filas entrenamiento ENN: %d\n", cantidadFilasEntrenamiento, cantidadFilasEntrenamientoEnn);
-    printf("Introduce 0 si desea introducir un dato de prueba o 1 si desea "
-           "probarlo con un dataset de prueba: ");
 
     printf("Introduce 0 si deseas introducir un dato de prueba o 1 si deseas probarlo con un dataset de prueba: ");
     scanf(" %d", &res);

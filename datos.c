@@ -82,28 +82,3 @@ void imprimirMatriz(Dato *datos, int cantidadFilas, int cantidadColumnas) {
         printf("\n");
     }
 }
-
-#include <stdio.h>
-
-void calcularMetricas(int verdaderosPositivos, int verdaderosNegativos,
-                      int falsosPositivos, int falsosNegativos, int k) {
-    double precision = (double)(verdaderosPositivos + verdaderosNegativos) /
-                       (verdaderosPositivos + verdaderosNegativos +
-                        falsosPositivos + falsosNegativos);
-    double sensibilidad = 0.0;
-    if (verdaderosPositivos + falsosNegativos != 0) {
-        sensibilidad = (double)verdaderosPositivos / (verdaderosPositivos + falsosNegativos);
-    } else {
-        sensibilidad = 0.0;
-    }
-    double especificidad = (double)verdaderosNegativos / (verdaderosNegativos + falsosPositivos);
-    double valorPredictivoPositivo = (double)verdaderosPositivos / (verdaderosPositivos + falsosPositivos);
-    double valorPredictivoNegativo = (double)verdaderosNegativos / (verdaderosNegativos + falsosNegativos);
-
-    printf("Metricas para k = %d:\n", k);
-    printf("Precision: %.3f\n", precision);
-    printf("Sensibilidad: %.3f\n", sensibilidad);
-    printf("Especificidad: %.3f\n", especificidad);
-    printf("Valor Predictivo Positivo: %.3f\n", valorPredictivoPositivo);
-    printf("Valor Predictivo Negativo: %.3f\n", valorPredictivoNegativo);
-}
